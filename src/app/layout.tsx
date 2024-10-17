@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MenuProvider } from "@/context/MenuProvider";
+import ReactQueryProvider from "@/utils/providers/ReactQueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,16 +50,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <MenuProvider>
-        <body
-          suppressHydrationWarning={true}
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <Navbar />
-            {children}
-          <Footer />
-        </body>
-      </MenuProvider>
+      <ReactQueryProvider>
+        <MenuProvider>
+          <body
+            suppressHydrationWarning={true}
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <Navbar />
+              {children}
+            <Footer />
+          </body>
+        </MenuProvider>
+      </ReactQueryProvider>
     </html>
   );
 }
