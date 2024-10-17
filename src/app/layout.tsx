@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Palette",
     description: "Expert color solutions for every space",
-    //url
+    url: "https://pallete-neon.vercel.app/",
     images: [
       {
         url: "/logo.png",

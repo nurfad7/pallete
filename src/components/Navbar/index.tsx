@@ -1,3 +1,4 @@
+"use client"
 import { 
   FC, 
   useEffect, 
@@ -40,7 +41,7 @@ const Navbar: FC = () => {
   return (
     <nav className="fixed flex justify-between items-center h-12 w-full px-5 pt-2 z-40">
       <Link className='h-10 w-16' href={"/"}>
-        <Image width={1111} height={741} className='h-full aspect-auto' src={logo} alt='pallete logo' />
+        <Image width={1111} height={741} className='h-full aspect-auto' src={logo} alt='pallete logo' priority/>
       </Link>
       <div className='hidden md:block'>
         <div className='flex gap-7'>
