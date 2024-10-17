@@ -51,6 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <MenuProvider>
         <body
+          suppressHydrationWarning={true}
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
           <Navbar />

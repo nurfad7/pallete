@@ -112,6 +112,7 @@ const Hero: FC = () => {
           alt="hero photo by Alexander Grey" 
           width={5616} 
           height={3744} 
+          loading="lazy"
           className="w-full h-full object-cover"/>
         <div ref={target3} 
           className="absolute top-0 flex flex-col gap-60 w-full h-[100vh] justify-center items-center
