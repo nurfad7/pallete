@@ -124,7 +124,7 @@ const Hero: FC = () => {
               <div className="uppercase text-nowrap pt-1">FOR EVERY SPACE</div>
             </div>
           </div>
-          <div className="w-1/2 text-lg md:text-2xl text-center rounded-xl">
+          <div className="w-1/2 text-base md:text-2xl text-center rounded-xl">
             At Pallete, we specialize in transforming spaces with our wide range of high-quality paints. 
             From bold colors to subtle hues, we bring your vision to life with precision and creativity.
           </div>
