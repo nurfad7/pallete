@@ -4,16 +4,23 @@ import {
   useContext, 
   useEffect, 
   useRef, 
+  useState, 
 } from 'react';
 import Image from "next/image";
 import heroPhoto from "@/images/by-alexander-grey.png";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import MenuContext from '@/context/MenuContext';
+import About from '@/components/About';
+import Teams from '@/components/Teams';
+import dynamic from 'next/dynamic';
+
+const History = dynamic(() => import("@/components/History"));
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero: FC = () => {
+  const [ historyShow, setHistoryShow ] = useState<boolean>(false);
   const target1 = useRef<HTMLDivElement | null>(null);
   const target2 = useRef<HTMLDivElement | null>(null);
   const target3 = useRef<HTMLDivElement | null>(null);
@@ -22,6 +29,10 @@ const Hero: FC = () => {
   const container3 = useRef<HTMLDivElement | null>(null);
   const container4 = useRef<HTMLDivElement | null>(null);
   const useMenu = useContext(MenuContext);
+
+  const toggleHistory = () => {
+    setHistoryShow(prev => !prev)
+  }
 
   useEffect(() => {
     const trigger1 = ScrollTrigger.create({
@@ -106,6 +117,9 @@ const Hero: FC = () => {
 
   return (
     <>
+      {
+        historyShow && (<History toggleHistory={toggleHistory} />)
+      }
       <div className="fixed w-full h-[100vh] z-0 overflow-hidden">
         <Image 
           src={heroPhoto} 
@@ -134,11 +148,11 @@ const Hero: FC = () => {
       <div className="relative flex flex-col">
         <div ref={container1} className=" w-full h-[100vh] flex flex-col justify-center"></div>
         <div ref={container2} className="w-full h-auto flex flex-col">
-          <div ref={container4} className="w-full min-h-[100vh] flex">
-            {/* ABOUT */}
+          <div ref={container4} className="w-full min-h-[100vh] md:min-h-[100vh] flex">
+            <About setIsShow={toggleHistory} />
           </div>
           <div className="w-full min-h-[100vh] flex">
-          {/* TEAM */}
+            <Teams />
           </div>
         </div>
         <div ref={container3} className="w-full min-h-[100vh] flex bg-product">
