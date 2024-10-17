@@ -43,7 +43,7 @@ const Navbar: FC = () => {
       <Link className='h-10 w-16' href={"/"}>
         <Image width={1111} height={741} className='h-full aspect-auto' src={logo} alt='pallete logo' priority/>
       </Link>
-      <div className='hidden md:block'>
+      <div className="hidden md:block">
         <div className='flex gap-7'>
           <Link href={"/"} onClick={() => {handlebutton(1)}} 
             className={cn('group flex pl-[1.3rem] rounded-md', 
@@ -94,6 +94,12 @@ const Navbar: FC = () => {
             </span>
           </Link>
         </div>
+      </div>
+      <div className="block md:hidden">
+        <Icon icon="menu" />
+      </div>
+      <div className="block md:hidden fixed z-50 bg-product">
+
       </div>
     </nav>
   )

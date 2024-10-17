@@ -117,8 +117,8 @@ const Hero: FC = () => {
         <div ref={target3} 
           className="absolute top-0 flex flex-col gap-60 w-full h-[100vh] justify-center items-center
             bg-black bg-opacity-30">
-          <div className="flex flex-col w-screen h-12 md:h-[4.2rem] overflow-hidden 
-              text-5xl md:text-7xl text-center">
+          <div className="flex flex-col w-screen h-12 md:h-[4.2rem] overflow-hidden text-2xl 
+              md:text-7xl text-center">
             <div ref={target1} className="text-center grid gap-1 pt-8">
               <div className="uppercase text-nowrap">EXPERT COLOR SOLUTIONS</div>
               <div className="uppercase text-nowrap pt-1">FOR EVERY SPACE</div>
