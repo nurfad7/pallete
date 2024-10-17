@@ -7,15 +7,16 @@ import {
   useState, 
 } from 'react';
 import Image from "next/image";
-import heroPhoto from "@/images/by-alexander-grey.png";
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import MenuContext from '@/context/MenuContext';
 import About from '@/components/About';
 import Teams from '@/components/Teams';
 import dynamic from 'next/dynamic';
+import Testimonials from '@/components/Testimonials';
 
 const History = dynamic(() => import("@/components/History"));
+const Products = dynamic(() => import("@/components/Products"));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +123,7 @@ const Hero: FC = () => {
       }
       <div className="fixed w-full h-[100vh] z-0 overflow-hidden">
         <Image 
-          src={heroPhoto} 
+          src="https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg" 
           alt="hero photo by Alexander Grey" 
           width={5616} 
           height={3744} 
@@ -156,10 +157,12 @@ const Hero: FC = () => {
           </div>
         </div>
         <div ref={container3} className="w-full min-h-[100vh] flex bg-product">
-          {/* Products */}
+          {
+            useMenu?.currentMenu == 3 && <Products />
+          }
         </div>
         <div className="w-full min-h-[100vh] flex bg-product">
-          {/* Testimonials */}
+          <Testimonials />
         </div>
       </div>
     </>

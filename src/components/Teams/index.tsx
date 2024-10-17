@@ -8,7 +8,7 @@ const Teams: FC = () => {
   return (
     <div id="teams" className='w-full min-h-[100vh] flex flex-col items-center mb-20'>
       <div className="text-3xl font-medium mb-4 mt-14 text-center">Our Leadership Team</div>
-      <div className="text-sm text-center mb-10">
+      <div className="text-sm text-center mb-10 px-5 md:px-0">
         &quot;Meet the talented individuals behind Pallete. Our painters, designers, 
         and color experts work together to deliver the best results for our clients.&quot;
       </div>

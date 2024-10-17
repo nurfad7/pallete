@@ -6,7 +6,6 @@ import {
   useState, 
 } from 'react'
 import Image from "next/image"
-import logo from "@/images/logo.png"
 import Link from 'next/link'
 import Icon from '@/components/Icon'
 import { cn } from '@/utils/merge'
@@ -51,7 +50,9 @@ const Navbar: FC = () => {
     <>
       <nav className="fixed flex justify-between items-center h-12 w-full px-5 pt-2 z-40">
         <Link className='h-10 w-16' href={"/"}>
-          <Image width={1111} height={741} className='h-full aspect-auto' src={logo} alt='pallete logo' priority/>
+          <Image width={1111} height={741} className='h-full aspect-auto' 
+            src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/ly3xl2aypbhzlj7qjaus" 
+            alt='pallete logo' priority/>
         </Link>
         <div className="hidden md:block">
           <div className='flex gap-7'>
