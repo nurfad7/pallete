@@ -12,7 +12,7 @@ const Teams: FC = () => {
         &quot;Meet the talented individuals behind Pallete. Our painters, designers, 
         and color experts work together to deliver the best results for our clients.&quot;
       </div>
-      <div className="w-full grid grid-cols-1 md:grid-cols-4 px-24 text-center gap-7">
+      <div className="w-full grid grid-cols-1 md:grid-cols-4 px-10 md:px-24 text-center gap-7">
         {
           isLoading ? (<div>Loading...</div>) : error ? (<div>Error loading team members</div>)
           : members?.map((member, key) => (

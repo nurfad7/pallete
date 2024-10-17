@@ -11,7 +11,7 @@ const About: FC<AboutProps> = ({setIsShow}) => {
     <div id="about" 
       className='w-full min-h-[150vh] md:min-h-[100vh] flex flex-col justify-center px-20'>
       <div className="hidden md:block relative z-10 md:text-9xl font-bold leading-[0.5] pt-20">ABOUT</div>
-      <div className="relative z-20 flex flex-col md:flex-row w-full h-80">
+      <div className="relative z-20 flex flex-col md:flex-row w-full h-full md:h-80">
         <div className="flex flex-col w-full md:w-[20%] gap-5 md:gap-0">
           <div className="md:text-9xl font-bold flex"><span className="block md:hidden">ABOUT&nbsp;</span>US</div>
           <div className="text-sm text-left mb-5 md:mb-0">
@@ -39,8 +39,8 @@ const About: FC<AboutProps> = ({setIsShow}) => {
           <div onClick={setIsShow} className="font-bold text-sm cursor-pointer">Learn more</div>
         </div>
       </div>
-      <div className="hidden md:flex flex-col gap-2">
-        <div className="text-5xl font-medium mb-4">Our Team</div>
+      <div className="md:flex flex-col gap-2">
+        <div className="md:text-5xl font-medium mb-4">Our Team</div>
         <div>
           &quot;Our team of experienced painters and color experts works closely with 
           clients to bring their ideas to life.&quot;

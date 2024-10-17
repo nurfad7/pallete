@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react'
+import { FC, useContext, useState } from 'react'
 import Image from 'next/image';
 import { cn } from '@/utils/merge';
 import Link from 'next/link';
@@ -6,6 +6,7 @@ import MenuContext from '@/context/MenuContext';
 
 const Products: FC = () => {
   const useMenu = useContext(MenuContext)
+  const [bgWall, setBgWall] = useState<string>("bg-classic-blue");
   return (
     <div id="products" className="w-full flex flex-col pb-5 bg text-black bg-product">
       <div className="relative w-full h-[100vh]">
@@ -42,25 +43,26 @@ const Products: FC = () => {
             </div>
             <div className="w-full flex flex-col md:flex-col-reverse px-3 pt-2 md:pt-7">
               <div className="w-full grid grid-cols-5 md:grid-cols-8 gap-5 text-center justify-center mt-5 mb-2 md:mb-0">
-                <div className="flex flex-col gap-1 items-center"><div className="bg-classic-blue rounded-full w-7 h-7"></div><div className="text-sm">Classic Blue</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-ultimate-gray rounded-full w-7 h-7"></div><div className="text-sm">Ultimate Gray</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-illuminating-yellow rounded-full w-7 h-7"></div><div className="text-sm">Illuminating Yellow</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-burnt-coral rounded-full w-7 h-7"></div><div className="text-sm">Burnt Coral</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-mint-green rounded-full w-7 h-7"></div><div className="text-sm">Mint Green</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-cerulean rounded-full w-7 h-7"></div><div className="text-sm">Cerulean</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-raspberry-sorbet rounded-full w-7 h-7"></div><div className="text-sm">Raspberry Sorbet</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-french-blue rounded-full w-7 h-7"></div><div className="text-sm">French Blue</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-green-ash rounded-full w-7 h-7"></div><div className="text-sm">Green Ash</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-amethyst-orchid rounded-full w-7 h-7"></div><div className="text-sm">Amethyst Orchid</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-marigold rounded-full w-7 h-7"></div><div className="text-sm">Marigold</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-sky-blue rounded-full w-7 h-7"></div><div className="text-sm">Sky Blue</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-lavender rounded-full w-7 h-7"></div><div className="text-sm">Lavender</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-sand-dollar rounded-full w-7 h-7"></div><div className="text-sm">Sand Dollar</div></div>
-                <div className="flex flex-col gap-1 items-center"><div className="bg-rose-quartz rounded-full w-7 h-7"></div><div className="text-sm">Rose Quartz</div></div>
+                <div onClick={()=>setBgWall("bg-classic-blue")} className="flex flex-col gap-1 items-center"><div className="bg-classic-blue rounded-full w-7 h-7"></div><div className="text-sm">Classic Blue</div></div>
+                <div onClick={()=>setBgWall("bg-ultimate-gray")} className="flex flex-col gap-1 items-center"><div className="bg-ultimate-gray rounded-full w-7 h-7"></div><div className="text-sm">Ultimate Gray</div></div>
+                <div onClick={()=>setBgWall("bg-illuminating-yellow")} className="flex flex-col gap-1 items-center"><div className="bg-illuminating-yellow rounded-full w-7 h-7"></div><div className="text-sm">Illuminating Yellow</div></div>
+                <div onClick={()=>setBgWall("bg-burnt-coral")} className="flex flex-col gap-1 items-center"><div className="bg-burnt-coral rounded-full w-7 h-7"></div><div className="text-sm">Burnt Coral</div></div>
+                <div onClick={()=>setBgWall("bg-mint-green")} className="flex flex-col gap-1 items-center"><div className="bg-mint-green rounded-full w-7 h-7"></div><div className="text-sm">Mint Green</div></div>
+                <div onClick={()=>setBgWall("bg-cerulean")} className="flex flex-col gap-1 items-center"><div className="bg-cerulean rounded-full w-7 h-7"></div><div className="text-sm">Cerulean</div></div>
+                <div onClick={()=>setBgWall("bg-raspberry-sorbet")} className="flex flex-col gap-1 items-center"><div className="bg-raspberry-sorbet rounded-full w-7 h-7"></div><div className="text-sm">Raspberry Sorbet</div></div>
+                <div onClick={()=>setBgWall("bg-french-blue")} className="flex flex-col gap-1 items-center"><div className="bg-french-blue rounded-full w-7 h-7"></div><div className="text-sm">French Blue</div></div>
+                <div onClick={()=>setBgWall("bg-green-ash")} className="flex flex-col gap-1 items-center"><div className="bg-green-ash rounded-full w-7 h-7"></div><div className="text-sm">Green Ash</div></div>
+                <div onClick={()=>setBgWall("bg-amethyst-orchid")} className="flex flex-col gap-1 items-center"><div className="bg-amethyst-orchid rounded-full w-7 h-7"></div><div className="text-sm">Amethyst Orchid</div></div>
+                <div onClick={()=>setBgWall("bg-marigold")} className="flex flex-col gap-1 items-center"><div className="bg-marigold rounded-full w-7 h-7"></div><div className="text-sm">Marigold</div></div>
+                <div onClick={()=>setBgWall("bg-sky-blue")} className="flex flex-col gap-1 items-center"><div className="bg-sky-blue rounded-full w-7 h-7"></div><div className="text-sm">Sky Blue</div></div>
+                <div onClick={()=>setBgWall("bg-lavender")} className="flex flex-col gap-1 items-center"><div className="bg-lavender rounded-full w-7 h-7"></div><div className="text-sm">Lavender</div></div>
+                <div onClick={()=>setBgWall("bg-sand-dollar")} className="flex flex-col gap-1 items-center"><div className="bg-sand-dollar rounded-full w-7 h-7"></div><div className="text-sm">Sand Dollar</div></div>
+                <div onClick={()=>setBgWall("bg-rose-quartz")} className="flex flex-col gap-1 items-center"><div className="bg-rose-quartz rounded-full w-7 h-7"></div><div className="text-sm">Rose Quartz</div></div>
               </div>
               <div className="w-full flex flex-col md:flex-row px-5 gap-5">
                 <div className="w-full md:w-[55%] h-auto flex">
-                  <div className="w-full h-auto flex justify-end bg-classic-blue rounded-xl">
+                  <div className={cn("w-full h-auto flex justify-end rounded-xl", 
+                      bgWall)}>
                     <Image src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/rwlrd6qcbp0zazvhn2dn" 
                       width={2022} height={1349} alt="photo by cats coming"
                       className="w-full h-auto object-cover" />
@@ -113,7 +115,7 @@ const Products: FC = () => {
             <div className="w-[40%] md:w-[70%] h-full border-b border-b-gray-500 bg-transparent"></div>
           </div>
           <div className="w-full min-h-[100vh] flex flex-col md:flex-row px-3 pt-7 bg-product">
-            <div className="w-full md:w-1/2 min-h-[50vh] relative">
+            <div className="w-full md:w-1/2 min-h-[30rem] relative">
               <div className="absolute top-2 left-[30%] z-20">
                 <div className="w-52 h-52">
                   <Image src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/vr2rjvw7dwfmficbzyp6"
@@ -197,7 +199,7 @@ const Products: FC = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2 min-h-[50vh]">
-              <div className="w-full h-full relative">
+              <div className="w-full min-h-[35rem] relative">
                 <div className="absolute top-2 left-[30%] z-20">
                   <div className="w-52 h-52">
                     <Image src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/b0mjfvt2mm3hr85svvwy"
@@ -205,7 +207,7 @@ const Products: FC = () => {
                       className="w-full h-full object-cover rounded-2xl" />
                   </div>
                 </div>
-                <div className="absolute top-44 left-[50%] z-10">
+                <div className="absolute top-44 left-[20%] md:left-[50%] z-10">
                   <div className="w-52 h-52">
                     <Image src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/qkobmt2o7ba8cmm4rgda"
                       width={3024} height={4032} alt="by cisse vandeweyer"

@@ -70,7 +70,7 @@ const Contact: FC = () => {
             Whether you have questions about our products and services, need guidance on a project, 
             or want to explore color customization options, our team is ready to assist you.
           </div>
-          <div className="w-full px-24 flex flex-col mt-20 gap-5">
+          <div className="w-full px-5 md:px-24 flex flex-col mt-20 gap-5">
             <div className="flex flex-col gap-2">
               <label htmlFor="name" className="text-lg font-medium text-black">
                 Name
