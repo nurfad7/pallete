@@ -18,7 +18,7 @@ const Feedback = dynamic(() => import("@/components/Feedback"));
 
 const Contact: FC = () => {
   const [ feedbackShow, setFeedbackShow ] = useState<boolean>(false);
-  const { addFeedback, error, isLoading } = useFeedbacks();
+  const { addFeedback, error } = useFeedbacks();
 
   const toggleFeedback = () => {
     setFeedbackShow(prev => !prev)
