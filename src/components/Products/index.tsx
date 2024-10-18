@@ -1,12 +1,46 @@
-import { FC, useContext, useState } from 'react'
+import { 
+  FC, 
+  useContext, 
+  useState, 
+  useRef, 
+  useEffect, 
+} from 'react'
 import Image from 'next/image';
 import { cn } from '@/utils/merge';
 import Link from 'next/link';
 import MenuContext from '@/context/MenuContext';
+import { gsap } from 'gsap';
 
 const Products: FC = () => {
   const useMenu = useContext(MenuContext)
   const [bgWall, setBgWall] = useState<string>("bg-classic-blue");
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const productLink1 = useRef<HTMLAnchorElement | null>(null);
+  const productLink2 = useRef<HTMLAnchorElement | null>(null);
+  const productLink3 = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    gsap.fromTo(boxRef.current, { width: "0" },
+      {
+      width: "100%",
+      duration: 2,
+      ease: "power1.inOut"
+    });
+  }, [bgWall]);
+
+  useEffect(() => {
+    gsap.fromTo([
+      productLink1.current, 
+      productLink2.current, 
+      productLink3.current
+    ], { opacity: "0" },
+      {
+      opacity: "100%",
+      duration: 3,
+      ease: "bounce.inOut"
+    });
+  }, []);
+
   return (
     <div id="products" className="w-full flex flex-col pb-5 bg text-black bg-product">
       <div className="relative w-full h-[100vh]">
@@ -16,17 +50,17 @@ const Products: FC = () => {
         <div className="absolute text-3xl md:text-6xl font-bold top-16 left-1/2 translate-x-[-50%]">
           Products & Services
         </div>
-        <Link href={"/#paints"}
+        <Link ref={productLink1} href={"/#paints"}
           className={cn("absolute top-[40%] right-[55%] md:right-[25%] bg-gray-500 bg-opacity-30", 
           "p-3 md:p-5 text-lg font-bold rounded-xl text-gray-30")}>
           Paints
         </Link>
-        <Link href={"/#ceramics"}
+        <Link ref={productLink2} href={"/#ceramics"}
           className={cn("absolute top-[50%] right-[5%] md:right-[5%] bg-gray-500 bg-opacity-30", 
           "p-3 md:p-5 text-lg font-bold rounded-xl")}>
           Ceramics
         </Link>
-        <Link href={"/#granites"}
+        <Link ref={productLink3} href={"/#granites"}
           className={cn("absolute top-[65%] right-[55%] md:right-[25%] bg-gray-500 bg-opacity-30", 
           "p-3 md:p-5 text-lg font-bold rounded-xl")}>
           Granites
@@ -42,27 +76,30 @@ const Products: FC = () => {
               <div className="w-[70%] md:w-[85%] h-full border-b border-b-gray-500"></div>
             </div>
             <div className="w-full flex flex-col md:flex-col-reverse px-3 pt-2 md:pt-7">
-              <div className="w-full grid grid-cols-5 md:grid-cols-8 gap-5 text-center justify-center mt-5 mb-2 md:mb-0">
-                <div onClick={()=>setBgWall("bg-classic-blue")} className="flex flex-col gap-1 items-center"><div className="bg-classic-blue rounded-full w-7 h-7"></div><div className="text-sm">Classic Blue</div></div>
-                <div onClick={()=>setBgWall("bg-ultimate-gray")} className="flex flex-col gap-1 items-center"><div className="bg-ultimate-gray rounded-full w-7 h-7"></div><div className="text-sm">Ultimate Gray</div></div>
-                <div onClick={()=>setBgWall("bg-illuminating-yellow")} className="flex flex-col gap-1 items-center"><div className="bg-illuminating-yellow rounded-full w-7 h-7"></div><div className="text-sm">Illuminating Yellow</div></div>
-                <div onClick={()=>setBgWall("bg-burnt-coral")} className="flex flex-col gap-1 items-center"><div className="bg-burnt-coral rounded-full w-7 h-7"></div><div className="text-sm">Burnt Coral</div></div>
-                <div onClick={()=>setBgWall("bg-mint-green")} className="flex flex-col gap-1 items-center"><div className="bg-mint-green rounded-full w-7 h-7"></div><div className="text-sm">Mint Green</div></div>
-                <div onClick={()=>setBgWall("bg-cerulean")} className="flex flex-col gap-1 items-center"><div className="bg-cerulean rounded-full w-7 h-7"></div><div className="text-sm">Cerulean</div></div>
-                <div onClick={()=>setBgWall("bg-raspberry-sorbet")} className="flex flex-col gap-1 items-center"><div className="bg-raspberry-sorbet rounded-full w-7 h-7"></div><div className="text-sm">Raspberry Sorbet</div></div>
-                <div onClick={()=>setBgWall("bg-french-blue")} className="flex flex-col gap-1 items-center"><div className="bg-french-blue rounded-full w-7 h-7"></div><div className="text-sm">French Blue</div></div>
-                <div onClick={()=>setBgWall("bg-green-ash")} className="flex flex-col gap-1 items-center"><div className="bg-green-ash rounded-full w-7 h-7"></div><div className="text-sm">Green Ash</div></div>
-                <div onClick={()=>setBgWall("bg-amethyst-orchid")} className="flex flex-col gap-1 items-center"><div className="bg-amethyst-orchid rounded-full w-7 h-7"></div><div className="text-sm">Amethyst Orchid</div></div>
-                <div onClick={()=>setBgWall("bg-marigold")} className="flex flex-col gap-1 items-center"><div className="bg-marigold rounded-full w-7 h-7"></div><div className="text-sm">Marigold</div></div>
-                <div onClick={()=>setBgWall("bg-sky-blue")} className="flex flex-col gap-1 items-center"><div className="bg-sky-blue rounded-full w-7 h-7"></div><div className="text-sm">Sky Blue</div></div>
-                <div onClick={()=>setBgWall("bg-lavender")} className="flex flex-col gap-1 items-center"><div className="bg-lavender rounded-full w-7 h-7"></div><div className="text-sm">Lavender</div></div>
-                <div onClick={()=>setBgWall("bg-sand-dollar")} className="flex flex-col gap-1 items-center"><div className="bg-sand-dollar rounded-full w-7 h-7"></div><div className="text-sm">Sand Dollar</div></div>
-                <div onClick={()=>setBgWall("bg-rose-quartz")} className="flex flex-col gap-1 items-center"><div className="bg-rose-quartz rounded-full w-7 h-7"></div><div className="text-sm">Rose Quartz</div></div>
+              <div className="w-full flex flex-col">
+                <div className="w-full text-black text-sm pl-5 pt-2 md:pl-8 md:pt-0">Choose the color to change wall color</div>
+                <div className="w-full grid grid-cols-5 md:grid-cols-8 gap-5 text-center justify-center mt-5 mb-2 md:mb-0">
+                  <div onClick={()=>setBgWall("bg-classic-blue")} className="flex flex-col gap-1 items-center"><div className="bg-classic-blue rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Classic Blue</div></div>
+                  <div onClick={()=>setBgWall("bg-ultimate-gray")} className="flex flex-col gap-1 items-center"><div className="bg-ultimate-gray rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Ultimate Gray</div></div>
+                  <div onClick={()=>setBgWall("bg-illuminating-yellow")} className="flex flex-col gap-1 items-center"><div className="bg-illuminating-yellow rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Illuminating Yellow</div></div>
+                  <div onClick={()=>setBgWall("bg-burnt-coral")} className="flex flex-col gap-1 items-center"><div className="bg-burnt-coral rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Burnt Coral</div></div>
+                  <div onClick={()=>setBgWall("bg-mint-green")} className="flex flex-col gap-1 items-center"><div className="bg-mint-green rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Mint Green</div></div>
+                  <div onClick={()=>setBgWall("bg-cerulean")} className="flex flex-col gap-1 items-center"><div className="bg-cerulean rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Cerulean</div></div>
+                  <div onClick={()=>setBgWall("bg-raspberry-sorbet")} className="flex flex-col gap-1 items-center"><div className="bg-raspberry-sorbet rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Raspberry Sorbet</div></div>
+                  <div onClick={()=>setBgWall("bg-french-blue")} className="flex flex-col gap-1 items-center"><div className="bg-french-blue rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">French Blue</div></div>
+                  <div onClick={()=>setBgWall("bg-green-ash")} className="flex flex-col gap-1 items-center"><div className="bg-green-ash rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Green Ash</div></div>
+                  <div onClick={()=>setBgWall("bg-amethyst-orchid")} className="flex flex-col gap-1 items-center"><div className="bg-amethyst-orchid rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Amethyst Orchid</div></div>
+                  <div onClick={()=>setBgWall("bg-marigold")} className="flex flex-col gap-1 items-center"><div className="bg-marigold rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Marigold</div></div>
+                  <div onClick={()=>setBgWall("bg-sky-blue")} className="flex flex-col gap-1 items-center"><div className="bg-sky-blue rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Sky Blue</div></div>
+                  <div onClick={()=>setBgWall("bg-lavender")} className="flex flex-col gap-1 items-center"><div className="bg-lavender rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Lavender</div></div>
+                  <div onClick={()=>setBgWall("bg-sand-dollar")} className="flex flex-col gap-1 items-center"><div className="bg-sand-dollar rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Sand Dollar</div></div>
+                  <div onClick={()=>setBgWall("bg-rose-quartz")} className="flex flex-col gap-1 items-center"><div className="bg-rose-quartz rounded-full w-7 h-7 cursor-pointer"></div><div className="text-black text-sm">Rose Quartz</div></div>
+                </div>
               </div>
               <div className="w-full flex flex-col md:flex-row px-5 gap-5">
-                <div className="w-full md:w-[55%] h-auto flex">
-                  <div className={cn("w-full h-auto flex justify-end rounded-xl", 
-                      bgWall)}>
+                <div className="w-full md:w-[55%] h-auto flex relative">
+                  <div ref={boxRef} className={cn(bgWall, "w-full h-full rounded-xl z-10 absolute top-0 left-0")}></div>
+                  <div className={cn("w-full h-auto flex justify-end rounded-xl z-20")}>
                     <Image src="https://res.cloudinary.com/dhu6ayhdj/image/upload/f_auto,q_auto/v1/pallete/rwlrd6qcbp0zazvhn2dn" 
                       width={2022} height={1349} alt="photo by cats coming"
                       className="w-full h-auto object-cover" />

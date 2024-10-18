@@ -4,12 +4,14 @@ import {
   useEffect, 
   useContext, 
   useState, 
+  useRef, 
 } from 'react'
 import Image from "next/image"
 import Link from 'next/link'
 import Icon from '@/components/Icon'
 import { cn } from '@/utils/merge'
 import MenuContext from '@/context/MenuContext'
+import { gsap } from 'gsap';
 import dynamic from 'next/dynamic';
 
 const OverlayMenu = dynamic(() => import("@/components/OverlayMenu"));
@@ -17,6 +19,7 @@ const OverlayMenu = dynamic(() => import("@/components/OverlayMenu"));
 const Navbar: FC = () => {
   const useMenu = useContext(MenuContext);
   const [burgerShow, setBurgerShow] = useState<boolean>(false);
+  const overlayDiv = useRef<HTMLDivElement | null>(null);
 
   const handleButton = (menuCode: number) => {
     useMenu?.setCurrentMenu(menuCode)
@@ -25,6 +28,26 @@ const Navbar: FC = () => {
   const handleBurger = () => {
     setBurgerShow(show => !show)
   }
+
+  useEffect(() => {
+    if(burgerShow) {
+      gsap.fromTo(overlayDiv.current, { height: "0", opacity: "0" },
+        {
+        height: "100%",
+        opacity: "100%",
+        duration: 1,
+        ease: "power1.inOut"
+      });
+    } else {
+      gsap.fromTo(overlayDiv.current, { height: "100%", opacity: "100%" },
+        {
+        height: "0",
+        opacity: "0",
+        duration: 1,
+        ease: "power1.inOut"
+      });
+    }
+  }, [burgerShow]);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -111,7 +134,7 @@ const Navbar: FC = () => {
           <Icon icon="menu" />
         </div>
       </nav>
-      <div className="flex w-full md:hidden fixed z-50 bg-product">
+      <div ref={overlayDiv} className="flex w-full md:hidden fixed z-50 bg-product">
         {
           burgerShow && (<OverlayMenu setHide={handleBurger} />)
         }
